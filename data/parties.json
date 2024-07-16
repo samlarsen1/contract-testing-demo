@@ -1,0 +1,90 @@
+{
+  "parties": [
+    {
+      "partyId": "123456",
+      "partyName": "John Smith",
+      "partyType": "INDIVIDUAL",
+      "addresses": [
+        {
+          "addressType": "RESIDENTIAL",
+          "addressLine1": "123 Main St",
+          "city": "Anytown",
+          "countrySubDivision": "Anycounty",
+          "postalCode": "12345",
+          "country": "GB"
+        }
+      ],
+      "emailAddresses": [
+        "john.smith@example.com"
+      ],
+      "phoneNumbers": [
+        {
+          "phoneNumberType": "MOBILE",
+          "phoneNumber": "+441234567890"
+        }
+      ],
+      "accounts": [
+        {
+          "accountId": "789012",
+          "accountType": "PERSONAL",
+          "accountSubType": "CURRENT_ACCOUNT",
+          "currency": "GBP",
+          "accountIdentifications": [
+            {
+              "identificationType": "SORT_CODE",
+              "identification": "40-47-84"
+            },
+            {
+              "identificationType": "ACCOUNT_NUMBER",
+              "identification": "12345678"
+            }
+          ],
+          "accountName": "John Smith Current Account"
+        }
+      ]
+    },
+    {
+      "partyId": "789012",
+      "partyName": "Jane Doe",
+      "partyType": "INDIVIDUAL",
+      "addresses": [
+        {
+          "addressType": "RESIDENTIAL",
+          "addressLine1": "456 Elm St",
+          "city": "Othertown",
+          "countrySubDivision": "Othercounty",
+          "postalCode": "67890",
+          "country": "GB"
+        }
+      ],
+      "emailAddresses": [
+        "jane.doe@example.com"
+      ],
+      "phoneNumbers": [
+        {
+          "phoneNumberType": "MOBILE",
+          "phoneNumber": "+441234567891"
+        }
+      ],
+      "accounts": [
+        {
+          "accountId": "234567",
+          "accountType": "PERSONAL",
+          "accountSubType": "SAVINGS_ACCOUNT",
+          "currency": "GBP",
+          "accountIdentifications": [
+            {
+              "identificationType": "SORT_CODE",
+              "identification": "30-46-74"
+            },
+            {
+              "identificationType": "ACCOUNT_NUMBER",
+              "identification": "87654321"
+            }
+          ],
+          "accountName": "Jane Doe Savings Account"
+        }
+      ]
+    }
+  ]
+}

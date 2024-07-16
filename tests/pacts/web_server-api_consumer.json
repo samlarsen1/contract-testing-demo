@@ -1,0 +1,88 @@
+{
+  "consumer": {
+    "name": "web_server"
+  },
+  "interactions": [
+    {
+      "description": "a request for user data",
+      "request": {
+        "method": "GET",
+        "path": "/parties/123456"
+      },
+      "response": {
+        "body": {
+          "Data": {
+            "Party": {
+              "accounts": [
+                {
+                  "accountId": "789012",
+                  "accountIdentifications": [
+                    {
+                      "identification": "40-47-84",
+                      "identificationType": "SORT_CODE"
+                    },
+                    {
+                      "identification": "12345678",
+                      "identificationType": "ACCOUNT_NUMBER"
+                    }
+                  ],
+                  "accountName": "John Smith Current Account",
+                  "accountSubType": "CURRENT_ACCOUNT",
+                  "accountType": "PERSONAL",
+                  "currency": "GBP"
+                }
+              ],
+              "addresses": [
+                {
+                  "addressLine1": "123 Main St",
+                  "addressType": "RESIDENTIAL",
+                  "city": "Anytown",
+                  "country": "GB",
+                  "countrySubDivision": "Anycounty",
+                  "postalCode": "12345"
+                }
+              ],
+              "emailAddresses": [
+                "john.smith@example.com"
+              ],
+              "partyId": "123456",
+              "partyName": "John Smith",
+              "partyType": "INDIVIDUAL",
+              "phoneNumbers": [
+                {
+                  "phoneNumber": "+441234567890",
+                  "phoneNumberType": "MOBILE"
+                }
+              ]
+            }
+          },
+          "Links": {
+            "Self": ""
+          },
+          "Meta": {
+            "TotalPages": 1
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "13.1.1"
+    },
+    "pactRust": {
+      "ffi": "0.4.21",
+      "models": "1.2.2"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "api_consumer"
+  }
+}

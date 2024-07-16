@@ -10,7 +10,7 @@ class ConsumerService {
   // Function to fetch user data from the producer
   async fetchUserData(userId) {
     try {
-      const response = await axios.get(`${this.baseUrl}/parties/${userId}`, {
+      const response = await axios.get('http://localhost:8080/parties/123456', {
         headers: {
           'Accept': 'application/json'
         },

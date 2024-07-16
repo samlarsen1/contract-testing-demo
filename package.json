@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/samlarsen1/contract-testing-demo#readme",
   "devDependencies": {
+    "@babel/plugin-syntax-import-attributes": "^7.24.7",
     "@babel/preset-env": "^7.24.8",
     "@pact-foundation/pact": "^13.1.1",
     "chai": "^5.1.1",

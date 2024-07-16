@@ -5,23 +5,19 @@ import path from 'path';
 import ConsumerService from '../consumer/consumerService';
 import { consumers } from 'stream';
 
-describe('Pact with Parties Service', () => {
+describe('Test the parties service contract', () => {
   // pact mock server url
   const mock_port = 8080;
   const mock_server_url = 'http://localhost:' + mock_port;  
   const provider = new Pact({
-    consumer: 'web_server',
-    provider: 'api_consumer',
+    consumer: 'api_consumer',
+    provider: 'api_provider',
     port: mock_port,
     dir: path.resolve(process.cwd(), 'tests', 'pacts'),
     spec: 2,
   });
 
-  const EXPECTED_BODY = {
-    accounts: {
-      accountId: "789012"
-    }
-  };
+  const EXPECTED_BODY = {"Data":{"Party":{"partyId":"123456","partyName":"John Smith","partyType":"INDIVIDUAL","addresses":[{"addressType":"RESIDENTIAL","addressLine1":"123 Main St","city":"Anytown","countrySubDivision":"Anycounty","postalCode":"12345","country":"GB"}],"emailAddresses":["john.smith@example.com"],"phoneNumbers":[{"phoneNumberType":"MOBILE","phoneNumber":"+441234567890"}],"accounts":[{"accountId":"789012","accountType":"PERSONAL","accountSubType":"CURRENT_ACCOUNT","currency":"GBP","accountIdentifications":[{"identificationType":"SORT_CODE","identification":"40-47-84"},{"identificationType":"ACCOUNT_NUMBER","identification":"12345678"}],"accountName":"John Smith Current Account"}]}},"Links":{"Self":""},"Meta":{"TotalPages":1}};
 
   // Setup Pact mock server
   beforeAll(() => provider.setup());
@@ -36,17 +32,18 @@ describe('Pact with Parties Service', () => {
       willRespondWith: {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: EXPECTED_BODY,
+        body: {"Data":{"Party":{"partyId":"123456","partyName":"John Smith","partyType":"INDIVIDUAL","addresses":[{"addressType":"RESIDENTIAL","addressLine1":"123 Main St","city":"Anytown","countrySubDivision":"Anycounty","postalCode":"12345","country":"GB"}],"emailAddresses":["john.smith@example.com"],"phoneNumbers":[{"phoneNumberType":"MOBILE","phoneNumber":"+441234567890"}],"accounts":[{"accountId":"789012","accountType":"PERSONAL","accountSubType":"CURRENT_ACCOUNT","currency":"GBP","accountIdentifications":[{"identificationType":"SORT_CODE","identification":"40-47-84"},{"identificationType":"ACCOUNT_NUMBER","identification":"12345678"}],"accountName":"John Smith Current Account"}]}},"Links":{"Self":""},"Meta":{"TotalPages":1}},
       }
     }
     return provider.addInteraction(interaction);
   });
-
-  // Verify interaction and generate Pact file
-  it('should fetch party information', async () => {
-    const consumerService = new ConsumerService(mock_server_url);
-    return consumerService.fetchUserData(123456).then((data) => {
-      expect(data).to.deep.equal(EXPECTED_BODY);
+  describe('Given a request for the party data for John Smith', () => {
+    // Verify interaction and generate Pact file
+    it('Then we should see the account number 123456', async () => {
+      const consumerService = new ConsumerService(mock_server_url);
+      return consumerService.fetchUserData(123456).then((data) => {
+        expect(data).toMatchObject(EXPECTED_BODY);
+      });
     });
   });
 

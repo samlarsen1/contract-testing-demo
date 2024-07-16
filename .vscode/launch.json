@@ -30,6 +30,7 @@
       "program": "${workspaceFolder}/node_modules/.bin/jest", 
       "args": [
         "${workspaceFolder}/tests/consumer.spec.js", // Path to your test file
+        "--runInBand",
         "--colors" // Optional: Enable colors in output
       ],
       "internalConsoleOptions": "openOnSessionStart"
